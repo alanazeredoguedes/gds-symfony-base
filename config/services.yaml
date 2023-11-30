@@ -23,3 +23,38 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+
+    # SONATA ADMIN SERVICES
+
+    settingBundle.setting:
+        class: App\Bundle\SettingBundle\Admin\SettingAdmin
+        tags:
+            - {
+                name: sonata.admin,
+                manager_type: orm,
+                model_class: App\Bundle\SettingBundle\Entity\Setting,
+                controller: App\Bundle\SettingBundle\Controller\SettingAdminController,
+                show_in_dashboard: false,
+                on_top: false,
+                group: "Setting",
+                label: Setting,
+                icon: 'fa fa-solid fa-passport',
+            }
+            #- { name: sonata.admin, manager_type: orm, group: "Content", label: User, on_top: false, icon: 'fa fa-solid fa-user',, show_in_dashboard: false }
+
+
+    admin.security:
+        class: App\Bundle\SecurityBundle\Admin\AdministratorAdmin
+        tags:
+            - {
+                name: sonata.admin,
+                manager_type: orm,
+                model_class: App\Bundle\SecurityBundle\Entity\Administrator,
+                controller: App\Bundle\SecurityBundle\Controller\AdministratorController,
+                show_in_dashboard: true,
+                on_top: false,
+                group: "Security",
+                label: Administrator,
+                icon: 'fa fa-solid fa-users',
+            }

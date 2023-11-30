@@ -3,3 +3,11 @@ controllers:
         path: ../src/Controller/
         namespace: App\Controller
     type: attribute
+
+bundle.security:
+    resource: '@BundleSecurityBundle/Resources/config/routes/routes.yaml'
+    prefix: /
+
+bundle.setting:
+    resource: '@BundleSettingBundle/Resources/config/routes/routes.yaml'
+    prefix: /

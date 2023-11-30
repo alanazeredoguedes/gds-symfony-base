@@ -19,4 +19,8 @@ return [
     Knp\Bundle\MenuBundle\KnpMenuBundle::class => ['all' => true],
     Sonata\AdminBundle\SonataAdminBundle::class => ['all' => true],
     Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle::class => ['all' => true],
+    Lexik\Bundle\JWTAuthenticationBundle\LexikJWTAuthenticationBundle::class => ['all' => true],
+    App\Bundle\SecurityBundle\BundleSecurityBundle::class => ['all' => true],
+    App\Bundle\SettingBundle\BundleSettingBundle::class => ['all' => true],
+
 ];
