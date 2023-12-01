@@ -1,0 +1,3 @@
+user:
+  resource: "@BundleMediaBundle/Controller/"
+  type:     annotation

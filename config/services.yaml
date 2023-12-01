@@ -24,8 +24,15 @@ services:
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
 
+    Twig\Extension\StringLoaderExtension:
 
+    ######################################################################################################################################################
     # SONATA ADMIN SERVICES
+    ######################################################################################################################################################
+
+
+    ######################################################################################################################################################
+    # SECURITY BUNDLE
 
     settingBundle.setting:
         class: App\Bundle\SettingBundle\Admin\SettingAdmin
@@ -40,11 +47,14 @@ services:
                 group: "Setting",
                 label: Setting,
                 icon: 'fa fa-solid fa-passport',
+                setTranslationDomain: '',
             }
             #- { name: sonata.admin, manager_type: orm, group: "Content", label: User, on_top: false, icon: 'fa fa-solid fa-user',, show_in_dashboard: false }
 
+    ######################################################################################################################################################
+    # SECURITY BUNDLE
 
-    admin.security:
+    admin.security.administrator:
         class: App\Bundle\SecurityBundle\Admin\AdministratorAdmin
         tags:
             - {
@@ -54,7 +64,70 @@ services:
                 controller: App\Bundle\SecurityBundle\Controller\AdministratorController,
                 show_in_dashboard: true,
                 on_top: false,
-                group: "Security",
+                group: "Security Admin",
                 label: Administrator,
+                icon: 'fa fa-solid fa-shield-alt',
+            }
+
+    admin.security.group_administrator:
+        class: App\Bundle\SecurityBundle\Admin\GroupAdministratorAdmin
+        tags:
+            - {
+                name: sonata.admin,
+                manager_type: orm,
+                model_class: App\Bundle\SecurityBundle\Entity\GroupAdministrator,
+                controller: App\Bundle\SecurityBundle\Controller\GroupAdministratorController,
+                show_in_dashboard: true,
+                on_top: false,
+                group: "Security Admin",
+                label: Groups,
+                icon: 'fa fa-solid fa-shield-alt',
+            }
+
+    admin.security.user:
+        class: App\Bundle\SecurityBundle\Admin\UserAdmin
+        tags:
+            - {
+                name: sonata.admin,
+                manager_type: orm,
+                model_class: App\Bundle\SecurityBundle\Entity\User,
+                controller: App\Bundle\SecurityBundle\Controller\UserController,
+                show_in_dashboard: true,
+                on_top: false,
+                group: "Security Users",
+                label: Users,
                 icon: 'fa fa-solid fa-users',
+            }
+
+    admin.security.group_user:
+        class: App\Bundle\SecurityBundle\Admin\GroupUserAdmin
+        tags:
+            - {
+                name: sonata.admin,
+                manager_type: orm,
+                model_class: App\Bundle\SecurityBundle\Entity\GroupUser,
+                controller: App\Bundle\SecurityBundle\Controller\GroupUserController,
+                show_in_dashboard: true,
+                on_top: false,
+                group: "Security Users",
+                label: Groups,
+                icon: 'fa fa-solid fa-users',
+            }
+
+    ######################################################################################################################################################
+    # MEDIA BUNDLE
+
+    admin.media.media:
+        class: App\Bundle\MediaBundle\Admin\MediaAdmin
+        tags:
+            - {
+                name: sonata.admin,
+                manager_type: orm,
+                model_class: App\Bundle\MediaBundle\Entity\Media,
+                controller: App\Bundle\MediaBundle\Controller\MediaController,
+                show_in_dashboard: true,
+                on_top: false,
+                group: "Gallery Media",
+                label: Media,
+                icon: 'fa fa-solid fa-image',
             }

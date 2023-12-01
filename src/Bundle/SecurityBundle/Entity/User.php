@@ -3,13 +3,13 @@
 namespace App\Bundle\SecurityBundle\Entity;
 
 use App\Bundle\SecurityBundle\Entity\base\BaseUser;
-use App\Bundle\SecurityBundle\Repository\AdministratorRepository;
+use App\Bundle\SecurityBundle\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\HasLifecycleCallbacks]
-#[ORM\Table(name: 'security_administrator')]
-#[ORM\Entity(repositoryClass: AdministratorRepository::class)]
-class Administrator extends BaseUser
+#[ORM\Table(name: 'security_user')]
+#[ORM\Entity(repositoryClass: UserRepository::class)]
+class User extends BaseUser
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]

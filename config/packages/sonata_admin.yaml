@@ -57,7 +57,7 @@ sonata_admin:
     #default_controller: App\Application\Project\AdminBundle\Controller\DefaultCRUDController
 
     templates:
-        layout: '@BundleSetting/setting/templates/standard_layout.html.twig'
+        layout: '@BundleSetting/templates/standard_layout.html.twig'
     #        ajax:                       '@SonataAdmin/ajax_layout.html.twig'
     #        list:                       '@SonataAdmin/CRUD/list.html.twig'
     #        show:                       '@SonataAdmin/CRUD/show.html.twig'

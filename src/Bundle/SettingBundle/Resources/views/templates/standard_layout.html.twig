@@ -93,44 +93,13 @@ file that was distributed with this source code.
 
     <link rel="stylesheet" href="https://unpkg.com/multiple-select@1.5.2/dist/multiple-select.min.css">
     <script src="https://unpkg.com/multiple-select@1.5.2/dist/multiple-select.min.js"></script>
-
-
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.min.css" crossorigin="anonymous">
 
+    {% block script_header %}
 
-    <script>
-        $( document ).ready(function() {
-            $('.multiple-select').multipleSelect({
-                //multiple: true,
-                //multipleWidth: 100,
-                width: '100%'
-            });
+    {% endblock %}
 
-            $('.default-select').multipleSelect({
-                //multiple: true,
-                //multipleWidth: 100,
-                width: '100%',
-                //dataFilter: true,
-            });
-
-            $(".multipleUpload").fileinput({
-                language: "pt-BR",
-                maxFileSize: 3000,
-                //allowedFileExtensions: ["jpg", "png", "gif"],
-                showUpload: true,
-                // previewFileType: "image",
-                // browseClass: "btn btn-info",
-                // mainClass: "d-grid",
-                // showCaption: false,
-                // showRemove: false,
-                // showUpload: false
-            });
-
-            //$('.sidebar-menu li:last-child').remove()
-
-        });
-    </script>
 
 </head>
 <body

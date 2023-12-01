@@ -2,9 +2,8 @@
 
 namespace App\Bundle\SecurityBundle\Admin;
 
-use App\Bundle\SecurityBundle\Entity\Administrator;
+use App\Bundle\SecurityBundle\Entity\User;
 use App\Bundle\SettingBundle\Admin\Base\BaseAdmin;
-use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -15,11 +14,11 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
-final class AdministratorAdmin extends BaseAdmin
+final class UserAdmin extends BaseAdmin
 {
     public function toString(object $object): string
     {
-        return $object instanceof Administrator ? (string) $object->getId() : '';
+        return $object instanceof User ? (string) $object->getId() : '';
     }
 
     protected function configureFormFields(FormMapper $form): void
@@ -88,13 +87,13 @@ final class AdministratorAdmin extends BaseAdmin
         $show->end();
     }
 
-    /** @param Administrator $object */
+    /** @param User $object */
     protected function prePersist(object $object): void
     {
         $object->setPassword( $this->passwordHasher->hashPassword( $object, $object->getPassword() ) );
     }
 
-    /** @param Administrator $object */
+    /** @param User $object */
     protected function preUpdate(object $object): void
     {
         if($this->passwordHasher->needsRehash($object))

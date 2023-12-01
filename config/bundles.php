@@ -21,6 +21,7 @@ return [
     Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle::class => ['all' => true],
     Lexik\Bundle\JWTAuthenticationBundle\LexikJWTAuthenticationBundle::class => ['all' => true],
     App\Bundle\SecurityBundle\BundleSecurityBundle::class => ['all' => true],
+    App\Bundle\MediaBundle\BundleMediaBundle::class => ['all' => true],
     App\Bundle\SettingBundle\BundleSettingBundle::class => ['all' => true],
 
 ];
