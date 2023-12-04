@@ -1,0 +1,46 @@
+{% extends '@BundleSetting/templates/CRUD/base_edit.html.twig' %}
+
+{% block sonata_tab_content %}
+
+    {% set tabs = [
+        {'name': 'General Info', 'description': ''},
+    ] %}
+
+    {% embed template_from_string(include("@BundleSetting/templates/components/tabs.html.twig")) %}
+
+        {% block tab_0 %}
+            <div class="row">
+
+                <div class="col-md-12">
+                    {{ form_row(form.name) }}
+                </div>
+
+                <div class="col-md-12">
+                    {{ form_row(form.description) }}
+                </div>
+
+                <div class="col-md-12">
+                    {{ form_row(form.email) }}
+                </div>
+
+                <div class="col-md-12">
+                    {{ form_row(form.phone) }}
+                </div>
+
+                <div class="col-md-12">
+                    {{ form_row(form.urlAdmin) }}
+                </div>
+
+                <div class="col-md-12">
+                    {{ form_row(form.urlApi) }}
+                </div>
+
+                <div class="col-md-12">
+                    {{ form_row(form.logo) }}
+                </div>
+
+            </div>
+        {% endblock tab_0 %}
+
+    {% endembed %}
+{% endblock sonata_tab_content %}

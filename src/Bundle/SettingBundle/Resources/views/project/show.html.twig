@@ -1,0 +1,73 @@
+{% extends '@BundleSetting/templates/CRUD/base_show.html.twig' %}
+
+{% block title %}
+    {{ parent() }}
+{% endblock title %}
+
+{% block navbar_title %}
+    {{ parent() }}
+{% endblock %}
+
+{% block actions %}
+    {{ parent() }}
+{% endblock %}
+
+{% block show %}
+    {% set tabs = [
+        {'name': 'Geral', 'description': ''},
+    ] %}
+
+    {% embed template_from_string(include("@BundleSetting/templates/components/tabs.html.twig")) %}
+
+        {% block tab_0 %}
+
+            {% embed template_from_string(include("@BundleSetting/templates/components/show_table.html.twig")) %}
+                {% block tbody %}
+
+                    <tr class="sonata-ba-view-container">
+                        <th>Host</th>
+                        <td>{{ object.host }}</td>
+                    </tr>
+
+                    <tr class="sonata-ba-view-container">
+                        <th>Username</th>
+                        <td>{{ object.username }}</td>
+                    </tr>
+
+                    <tr class="sonata-ba-view-container">
+                        <th>Password</th>
+                        <td>{% if object.password %} *** {% endif %}</td>
+                    </tr>
+
+                    <tr class="sonata-ba-view-container">
+                        <th>Type Security</th>
+                        <td>{{ object.typeSecurity }}</td>
+                    </tr>
+
+                    <tr class="sonata-ba-view-container">
+                        <th>Port</th>
+                        <td>{{ object.port }}</td>
+                    </tr>
+
+                    <tr class="sonata-ba-view-container">
+                        <th>From Name</th>
+                        <td>{{ object.fromName }}</td>
+                    </tr>
+
+                    <tr class="sonata-ba-view-container">
+                        <th>From Email</th>
+                        <td>{{ object.fromEmail }}</td>
+                    </tr>
+
+                    <tr class="sonata-ba-view-container">
+                        <th>Show Debug</th>
+                        <td>{% if object.debug %} True {% else %} False {% endif %}</td>
+                    </tr>
+
+                {% endblock %}
+            {% endembed %}
+
+        {% endblock tab_0 %}
+
+    {% endembed %}
+{% endblock show %}

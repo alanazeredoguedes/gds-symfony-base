@@ -1,0 +1,39 @@
+{% extends '@BundleSetting/templates/CRUD/base_edit.html.twig' %}
+
+{% block sonata_tab_content %}
+
+    {% set tabs = [
+        {'name': 'General Info', 'description': ''},
+        {'name': 'Modules and Permissions', 'description': ''},
+    ] %}
+
+    {% embed template_from_string(include("@BundleSetting/templates/components/tabs.html.twig")) %}
+
+        {% block tab_0 %}
+            <div class="row">
+
+                <div class="col-md-12">
+                    {{ form_row(form.name) }}
+                </div>
+
+                <div class="col-md-12">
+                    {{ form_row(form.description) }}
+                </div>
+
+            </div>
+        {% endblock tab_0 %}
+
+        {% block tab_1 %}
+            <div class="row">
+
+                <div class="col-md-12">
+                    {{ form_row(form.roles) }}
+                </div>
+
+            </div>
+        {% endblock tab_1 %}
+
+
+
+    {% endembed %}
+{% endblock sonata_tab_content %}

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Bundle\SettingBundle\EventListener;
+namespace App\Application\Project\SecurityUserBundle\EventListener;
 
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -11,35 +11,44 @@ class ExceptionListener
 {
     public function onKernelException(ExceptionEvent $event): void
     {
+        // You get the exception object from the received event
         $exception = $event->getThrowable();
+        // Get incoming request
         $request   = $event->getRequest();
 
+
+        $contentType = $request->query->get('Content-Type');
+        if(!$contentType)
+            $contentType = $request->headers->get('Content-Type');
+
         // Check if it is a rest api request
-        if ('application/json' === $request->headers->get('Content-Type'))
+        if ('application/json' === $contentType)
         {
+
+            //dd($exception);
             // Customize your response object to display the exception details
             $response = new JsonResponse([
                 'message'       => $exception->getMessage(),
-                'code'          => $exception->getCode(),
-                'traces'        => $exception->getTrace()
+                //'code'          => $exception->getPrevious()->getCode(),
+                //'traces'        => $exception->getTrace()
             ]);
 
-            // HttpExceptionInterface is a special type of exception that
-            // holds status code and header details
+
+
             if ($exception instanceof HttpExceptionInterface) {
+
                 $response->setStatusCode($exception->getStatusCode());
                 $response->headers->replace($exception->getHeaders());
+                $request->headers->set('Content-Type', 'application/json');
+
             } else {
                 $response->setStatusCode(Response::HTTP_INTERNAL_SERVER_ERROR);
             }
 
-            $customResponse = new JsonResponse(['status'=> false, 'message' => $exception->getMessage()],403);
-
-            // set it as response and it will be sent
-            $event->setResponse($customResponse);
+            //dd($response);
 
             // sends the modified response object to the event
-            //$event->setResponse($response);
+            $event->setResponse($response);
         }
     }
 }

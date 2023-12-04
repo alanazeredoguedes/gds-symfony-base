@@ -1,5 +1,5 @@
 <?php
-namespace App\Bundle\SettingBundle\Admin;
+namespace App\Bundle\SecurityBundle\Admin;
 
 use App\Bundle\SettingBundle\Admin\Base\BaseAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
@@ -8,7 +8,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollectionInterface;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-final class SettingAdmin extends BaseAdmin
+final class AuthAdministratorAdmin extends BaseAdmin
 {
     protected function generateBaseRoutePattern(bool $isChildAdmin = false): string
     {
@@ -22,11 +22,6 @@ final class SettingAdmin extends BaseAdmin
         $collection->add('login');
         $collection->add('logout');
         $collection->add('accessDenied');
-
-      /*  $routesRemove = ['show', 'list', 'create', 'edit', 'delete', 'batch', 'export', 'history'];
-        foreach ($routesRemove as $route){
-            $collection->remove($route);
-        }*/
 
     }
 
